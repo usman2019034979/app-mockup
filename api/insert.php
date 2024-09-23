@@ -61,9 +61,9 @@ class AppInsert extends DB
             $message = $this->sanitize($formData['message'] ?? '');
 
             if($name	==	'' || $email	==	'' || $gender	==	'' || $subjects	==	'' || $message	==	''){
-				echo json_encode(array('status' =>  false, 'message' => 'Values are empty.'));
-				return;
-			}
+		echo json_encode(array('status' =>  false, 'message' => 'Values are empty.'));
+		return;
+	    }
             
             echo $this->insertData($name, $email, $gender, $subjects, $message);
         } else {
