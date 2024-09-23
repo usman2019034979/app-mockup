@@ -60,6 +60,11 @@ class AppInsert extends DB
             $subjects = isset($formData['subjects']) ? implode(', ', array_map([$this, 'sanitize'], $formData['subjects'])) : '';
             $message = $this->sanitize($formData['message'] ?? '');
 
+            if($name	==	'' || $email	==	'' || $gender	==	'' || $subjects	==	'' || $message	==	''){
+				echo json_encode(array('status' =>  false, 'message' => 'Values are empty.'));
+				return;
+			}
+            
             echo $this->insertData($name, $email, $gender, $subjects, $message);
         } else {
             echo json_encode(array('status' =>  false, 'message' => 'Invalid request method.'));
